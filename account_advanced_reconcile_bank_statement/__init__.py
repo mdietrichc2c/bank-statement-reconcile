@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Romain Deheele
-#    Copyright 2013 Camptocamp SA
+#    Author: Matthieu Dietrich
+#    Copyright 2014 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,17 +19,5 @@
 #
 ##############################################################################
 
-from openerp.osv import orm
-
-
-class EasyReconcileAdvanced(orm.AbstractModel):
-
-    _inherit = 'easy.reconcile.advanced'
-
-    def _base_columns(self, rec):
-        """ Mandatory columns for move lines queries
-        An extra column aliased as ``key`` should be defined
-        in each query."""
-        aml_cols = super(EasyReconcileAdvanced, self)._base_columns(rec)
-        aml_cols.append('account_move_line.transaction_ref')
-        return aml_cols
+from . import easy_reconcile
+from . import advanced_reconciliation

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Romain Deheele
-#    Copyright 2013 Camptocamp SA
+#    Author: Matthieu Dietrich
+#    Copyright 2014 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,17 +19,26 @@
 #
 ##############################################################################
 
-from openerp.osv import orm
+{'name': 'Advanced Reconcile Bank Statement',
+ 'description':  """
+Advanced reconciliation method for the module account_advanced_reconcile
+========================================================================
+Reconcile rules with bank statement name.
 
+This will reconcile multiple credit move lines (bank statements) with
+all the lines from a specific bank statement, debit or credit (to also
+reconcile the commission with credit card imports).
 
-class EasyReconcileAdvanced(orm.AbstractModel):
-
-    _inherit = 'easy.reconcile.advanced'
-
-    def _base_columns(self, rec):
-        """ Mandatory columns for move lines queries
-        An extra column aliased as ``key`` should be defined
-        in each query."""
-        aml_cols = super(EasyReconcileAdvanced, self)._base_columns(rec)
-        aml_cols.append('account_move_line.transaction_ref')
-        return aml_cols
+""",
+ 'version': '1.0.0',
+ 'author': 'Camptocamp',
+ 'category': 'Finance',
+ 'website': 'http://www.camptocamp.com',
+ 'depends': ['account_advanced_reconcile'],
+ 'data': ['easy_reconcile_view.xml'],
+ 'demo': [],
+ 'test': [],
+ 'auto_install': False,
+ 'installable': True,
+ 'images': []
+ }
