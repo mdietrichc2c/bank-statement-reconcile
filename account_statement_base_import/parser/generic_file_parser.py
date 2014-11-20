@@ -19,7 +19,7 @@
 ##############################################################################
 
 import datetime
-from file_parser import FileParser
+from .file_parser import FileParser
 
 
 class GenericFileParser(FileParser):
